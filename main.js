@@ -2,30 +2,31 @@ const form = document.getElementById('form-contato');
 const nomeContato = document.getElementById('nome-completo');
 const telContato = document.getElementById('numero-telefone');
 const emailContato = document.getElementById('e-mail');
+const submitButton = document.getElementById('submit-button');
 const nome = [];
 const telefone = [];
 const email = [];
 
-form.addEventListener('submit', function (event) {
-    if (!isValidFullName(nomeContato.value)) {
-        alert('Por favor, insira um nome completo válido.');
-        event.preventDefault();
-    }
-    if (!isValidPhone(telContato.value)) {
-        alert('Por favor, insira um número de telefone válido.');
-        event.preventDefault();
-    }
+telContato.addEventListener('input', function (event) {
+    const input = event.target;
+    const value = input.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+    const formattedValue = formatPhoneNumber(value);
+    input.value = formattedValue;
 });
+
+function formatPhoneNumber(value) {
+    if (value.length <= 2) {
+        return `(${value}`;
+    } else if (value.length <= 7) {
+        return `(${value.slice(0, 2)})${value.slice(2)}`;
+    } else {
+        return `(${value.slice(0, 2)})${value.slice(2, 7)}-${value.slice(7, 11)}`;
+    }
+}
 
 function isValidFullName(fullName) {
     const words = fullName.split(' ');
     return words.length >= 2;
-}
-
-function isValidPhone(phoneNumber) {
-    const phonePattern = /^\d+$/;
-    
-    return phonePattern.test(phoneNumber);
 }
 
 telContato.addEventListener('keyup', function (e) {
@@ -41,13 +42,15 @@ telContato.addEventListener('keyup', function (e) {
 
 let linhas = '';
 
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    adicionaLinha();
-    atualizaQuantidadeContatos(); 
-    atualizaTabela();
-    ordenarTabela();
+submitButton.addEventListener('click', function() {
+    if (!isValidFullName(nomeContato.value)) {
+        alert('Por favor, insira um nome completo válido.');
+    } else {
+        adicionaLinha();
+        atualizaQuantidadeContatos();
+        atualizaTabela();
+        ordenarTabela();
+    }
 });
 
 function adicionaLinha() {
