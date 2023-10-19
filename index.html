@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Contatos</title>
+    <link rel="stylesheet" href="./main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="./imagens/Phone Icon.H03.2k.png" alt="telefone rosa" />
+            <h1>AGENDA DE CONTATOS</h1>
+        </header>
+        <form id="form-contato">
+            <input id="nome-completo" type="text" required placeholder="Nome Completo">
+            <input id="numero-telefone" required placeholder="Número de Telefone">
+            <input id="e-mail" type="email" placeholder="E-mail">
+            <button type="submit">Cadastrar Contato</button>
+        </form>
+        <table cellspacing="0">
+            <thead>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nome Completo</th>
+                        <th>Telefone</th>
+                        <th>E-mail</th>
+                    </tr>
+                </thead>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td id="tfoot-empty"></td>
+                    <td id="tfoot-titulo">Quantidade de Contatos</td>
+                    <td id="tfoot-qtd">---</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
