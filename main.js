@@ -67,7 +67,7 @@ function adicionaLinha() {
     email.push(inputEmailContato.value);
 
     let linha = '<tr id="linha-' + (nome.length - 1) + '">';
-    linha += `<td id="iniciais">${iniciais}</td>`;
+    linha += `<td id="iniciais">${iniciais.slice(0, 2)}</td>`;
     linha += `<td>${inputNomeCompleto.value}</td>`;
     linha += `<td>${inputNumeroTelefone.value}</td>`;
     linha += `<td>${inputEmailContato.value}</td>`;
